@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; media-src data: blob:; form-action 'none'; base-uri 'none'">
+<!-- Página criada com IA dentro da Regência. Ela não carrega nada da rede. -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Primeira Fornada · horário da padaria</title>
+<meta name="description" content="Horário da Padaria Primeira Fornada: de segunda a sábado, das 6h às 20h. Domingo, das 7h às 12h.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Horário de funcionamento da Padaria Primeira Fornada",
+  "description": "De segunda a sábado, das 6h às 20h. Domingo, das 7h às 12h.",
+  "inLanguage": "pt-BR",
+  "about": {
+    "@type": "Bakery",
+    "name": "Padaria Primeira Fornada",
+    "description": "Padaria de pão feito à mão (marca fictícia).",
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification","dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens": "06:00","closes": "20:00"},
+      {"@type": "OpeningHoursSpecification","dayOfWeek": "Sunday","opens": "07:00","closes": "12:00"}
+    ]
+  }
+}
+</script>
+<style>
+  :root{
+    --farinha:#f4f3ee;
+    --palha:#e8e2d2;
+    --casca:#2a2118;
+    --miolo:#5a4d40;
+    --azul-manha:#1f4e79;
+    --azul-funda:#16283a;
+    --sol:#d9a441;
+    --linha:#c9bfa8;
+    --linha-forte:#9c8f74;
+    --ease:cubic-bezier(.2,.7,.1,1);
+    --secao:clamp(4rem, 11vw, 10rem);
+    --titulo:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --corpo:system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  html{scrollbar-color:var(--linha) var(--farinha);scrollbar-width:auto;scroll-behavior:smooth}
+  ::-webkit-scrollbar{width:12px}
+  ::-webkit-scrollbar-track{background:var(--farinha)}
+  ::-webkit-scrollbar-thumb{background:var(--linha);border-radius:6px;border:2px solid var(--farinha)}
+  ::-webkit-scrollbar-thumb:hover{background:var(--linha-forte)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--farinha);color:var(--casca);font-family:var(--corpo);font-size:18px;line-height:1.7}
+  h1,h2,h3{font-family:var(--titulo);text-wrap:balance;font-weight:600;margin:0}
+  p{text-wrap:pretty;max-width:62ch;margin:0 0 1rem}
+  .num{font-variant-numeric:tabular-nums}
+  .wrap{width:min(1200px, 100% - 48px);margin-inline:auto}
+  a{color:var(--azul-manha)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--azul-manha);outline-offset:3px;border-radius:4px}
+  .pular{position:absolute;left:16px;top:-80px;background:var(--casca);color:var(--farinha);padding:.7rem 1rem;z-index:20;transition:top .3s var(--ease)}
+  .pular:focus{top:12px}
+
+  /* menu */
+  header{position:sticky;top:0;z-index:10;background:color-mix(in srgb, var(--farinha) 92%, transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--linha)}
+  .barra{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:68px}
+  .marca{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--casca);font-family:var(--titulo);font-size:1.2rem;font-weight:600;min-height:44px}
+  .marca svg{flex:none}
+  nav ul{list-style:none;margin:0;padding:0;display:flex;gap:.4rem}
+  nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 .9rem;text-decoration:none;color:var(--casca);border-radius:6px;transition:background-color .3s var(--ease),color .3s var(--ease)}
+  nav a:hover{background:var(--palha);color:var(--azul-manha)}
+  .abrir-menu{display:none;min-height:44px;padding:0 1rem;font:inherit;font-size:17px;background:transparent;color:var(--casca);border:2px solid var(--casca);border-radius:6px;cursor:pointer;transition:background-color .3s var(--ease)}
+  .abrir-menu:hover{background:var(--palha)}
+  @media (max-width:720px){
+    .abrir-menu{display:inline-flex;align-items:center}
+    nav ul{display:none;position:absolute;left:0;right:0;top:68px;flex-direction:column;background:var(--farinha);border-bottom:1px solid var(--linha);padding:.5rem 16px 1rem}
+    nav ul.aberto{display:flex}
+  }
+
+  /* topo */
+  .topo{min-height:82vh;display:grid;align-items:center;padding-block:clamp(2.5rem,6vw,5rem)}
+  .topo-grade{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(2rem,5vw,5rem);align-items:center}
+  .sobre{font-size:17px;color:var(--azul-manha);font-weight:600;margin-bottom:1rem;letter-spacing:.02em}
+  h1{font-size:clamp(2.7rem, 8.4vw, 5.6rem);line-height:.98;letter-spacing:-0.025em;margin-bottom:1.5rem}
+  h1 em{font-style:italic;color:var(--azul-manha)}
+  .sub{font-size:1.15rem;color:var(--miolo);margin-bottom:2rem}
+  .chamadas{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:1.6rem}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 1.4rem;font:inherit;font-weight:600;font-size:17px;text-decoration:none;border-radius:8px;transition:background-color .3s var(--ease),transform .3s var(--ease),color .3s var(--ease)}
+  .btn-cheio{background:var(--azul-manha);color:var(--farinha)}
+  .btn-cheio:hover{background:var(--azul-funda);transform:translateY(-2px)}
+  .btn-leve{color:var(--casca);border:2px solid var(--linha-forte)}
+  .btn-leve:hover{border-color:var(--casca);background:var(--palha)}
+  .agora{display:flex;align-items:center;gap:.7rem;font-size:17px;padding:.8rem 1rem;border-left:3px solid var(--sol);background:var(--palha);max-width:34rem}
+  .agora svg{flex:none}
+  .cena{width:100%;aspect-ratio:4/5;display:block;max-width:100%}
+  .cena .raio{transform-origin:200px 250px;animation:respira 6s var(--ease) infinite alternate}
+  .cena .vapor{animation:sobe 4s var(--ease) infinite alternate}
+  @keyframes respira{from{opacity:.55}to{opacity:.9}}
+  @keyframes sobe{from{transform:translateY(4px);opacity:.4}to{transform:translateY(-6px);opacity:.85}}
+  @media (max-width:860px){.topo-grade{grid-template-columns:minmax(0,1fr)}.cena{max-width:380px;margin-inline:auto}}
+
+  /* horário */
+  .secao{padding-block:var(--secao)}
+  .palha{background:var(--palha)}
+  h2{font-size:clamp(2rem, 5vw, 3.4rem);line-height:1.05;letter-spacing:-0.015em;margin-bottom:1.2rem}
+  .horario-grade{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,6vw,6rem);align-items:start}
+  @media (max-width:860px){.horario-grade{grid-template-columns:minmax(0,1fr)}}
+  .dias{list-style:none;margin:0;padding:0;border-top:2px solid var(--casca)}
+  .dias li{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1rem .6rem;border-bottom:1px solid var(--linha-forte);transition:background-color .4s var(--ease)}
+  .dias .dia{font-family:var(--titulo);font-size:clamp(1.2rem,2.6vw,1.6rem)}
+  .dias .hora{font-size:clamp(1.1rem,2.4vw,1.4rem);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .dias li.hoje{background:var(--farinha)}
+  .dias li.hoje .dia::after{content:"hoje";font-family:var(--corpo);font-size:15px;font-weight:600;color:var(--farinha);background:var(--azul-manha);padding:.1rem .5rem;border-radius:4px;margin-left:.6rem;vertical-align:middle}
+  .dias li.domingo .hora{color:var(--azul-manha)}
+  .nota{font-size:17px;color:var(--miolo)}
+
+  /* linha do dia */
+  .escura{background:var(--azul-funda);color:var(--farinha)}
+  .escura p{color:#d9dde2}
+  .escura h2{color:var(--farinha)}
+  .linha-cab{max-width:46rem;margin-bottom:3rem}
+  .regua{display:grid;gap:.9rem}
+  .faixa{display:grid;grid-template-columns:minmax(4.5rem,9rem) minmax(0,1fr);gap:1rem;align-items:center}
+  .faixa span{font-size:17px}
+  .trilho{position:relative;height:28px;background:rgba(244,243,238,.1);border-radius:4px}
+  .aberto-bar{position:absolute;top:0;bottom:0;background:var(--sol);border-radius:4px}
+  .marcas{display:grid;grid-template-columns:minmax(4.5rem,9rem) minmax(0,1fr);gap:1rem;margin-top:.6rem}
+  .marcas div{position:relative;height:1.6rem;font-size:16px;color:#d9dde2;font-variant-numeric:tabular-nums}
+  .marcas b{position:absolute;font-weight:400;transform:translateX(-50%)}
+  .marcas b:first-child{transform:none}.marcas b:last-child{transform:translateX(-100%)}
+  .agulha{position:absolute;top:-6px;bottom:-6px;width:3px;background:var(--farinha);border-radius:2px;display:none}
+  .legenda{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:2rem;font-size:17px}
+  .legenda i{display:inline-block;width:1.2rem;height:1rem;vertical-align:-2px;margin-right:.5rem;border-radius:3px}
+
+  /* dúvidas */
+  .duvidas{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,3rem)}
+  @media (max-width:720px){.duvidas{grid-template-columns:minmax(0,1fr)}}
+  .duvidas h3{font-size:clamp(1.3rem,2.6vw,1.7rem);margin-bottom:.6rem;line-height:1.2}
+  .duvidas article{border-top:2px solid var(--sol);padding-top:1.2rem}
+
+  footer{background:var(--casca);color:var(--farinha);padding-block:clamp(3rem,7vw,5rem) 2rem}
+  .rod{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:2rem}
+  @media (max-width:720px){.rod{grid-template-columns:minmax(0,1fr)}}
+  footer .marca{color:var(--farinha)}
+  footer p{color:#e3ddd0}
+  footer h2{font-size:1.2rem;letter-spacing:0;margin-bottom:.6rem;color:var(--farinha)}
+  footer ul{list-style:none;margin:0;padding:0}
+  footer a{color:var(--farinha);display:inline-flex;min-height:44px;align-items:center;text-decoration-color:var(--sol);text-underline-offset:4px;transition:color .3s var(--ease)}
+  footer a:hover{color:var(--sol)}
+  .rod-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));gap:1.5rem}
+  .fim{margin-top:3rem;padding-top:1.2rem;border-top:1px solid #5a4d40;font-size:16px;color:#cfc6b4}
+
+  .js .revela{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .js .revela.visto{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .cena .raio,.cena .vapor{animation:none}
+    .js .revela{opacity:1;transform:none;transition:none}
+    .btn,.dias li,nav a{transition:none}
+  }
+</style>
+</head>
+<body>
+<!-- direção: registro conversa, densidade contida, relação companheiro -->
+<a class="pular" href="#conteudo" data-rg="1">Pular para o conteúdo</a>
+
+<header data-rg="2">
+  <div class="wrap barra" data-rg="3">
+    <a class="marca" href="#conteudo" aria-label="Primeira Fornada, início" data-rg="4">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="#1f4e79" stroke-width="2" data-rg="5">
+        <circle cx="20" cy="20" r="18"/>
+        <path d="M9 25c0-6 5-10 11-10s11 4 11 10z"/>
+        <path d="M15 19l2 4M20 17v5M25 19l-2 4"/>
+      </svg>
+      Primeira Fornada
+    </a>
+    <nav aria-label="Seções da página" data-rg="6">
+      <button class="abrir-menu" type="button" aria-expanded="false" aria-controls="menu-lista" data-rg="7">Menu</button>
+      <ul id="menu-lista" data-rg="8">
+        <li data-rg="9"><a href="#horario" data-rg="10">Horário</a></li>
+        <li data-rg="11"><a href="#linha" data-rg="12">O dia na padaria</a></li>
+        <li data-rg="13"><a href="#duvidas" data-rg="14">Dúvidas</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" data-rg="15">
+  <section class="topo" aria-labelledby="titulo" data-rg="16">
+    <div class="wrap topo-grade" data-rg="17">
+      <div data-rg="18">
+        <p class="sobre" data-rg="19">Padaria Primeira Fornada</p>
+        <h1 id="titulo" data-rg="20">Pão quente desde as <em class="num" data-rg="21">6h</em> da manhã</h1>
+        <p class="sub" data-rg="22">De segunda a sábado, a porta abre às 6h e fecha às 20h. No domingo, abre às 7h e fecha ao meio-dia.</p>
+        <div class="chamadas" data-rg="23">
+          <a class="btn btn-cheio" href="#horario" data-rg="24">Ver o horário da semana</a>
+          <a class="btn btn-leve" href="#linha" data-rg="25">Ver o dia em uma linha</a>
+        </div>
+        <p class="agora" id="agora" aria-live="polite" data-rg="26">
+          <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#2a2118" stroke-width="1.8" stroke-linecap="round" data-rg="27"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span id="agora-texto" data-rg="28">Segunda a sábado, das 6h às 20h. Domingo, das 7h às 12h.</span>
+        </p>
+      </div>
+
+      <svg class="cena" viewBox="0 0 400 500" role="img" aria-label="Desenho de uma janela em arco com o sol nascendo atrás de três pães sobre uma tábua de madeira" data-rg="29">
+        <defs>
+          <linearGradient id="ceu" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#c9d6e3"/>
+            <stop offset=".6" stop-color="#f3e2bd"/>
+            <stop offset="1" stop-color="#f1c97f"/>
+          </linearGradient>
+          <radialGradient id="luz" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#fff3d1"/>
+            <stop offset="1" stop-color="#fff3d1" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="crosta" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#c58a45"/>
+            <stop offset="1" stop-color="#8f5a26"/>
+          </linearGradient>
+          <clipPath id="arco"><path d="M60 470V200a140 140 0 0 1 280 0v270z"/></clipPath>
+        </defs>
+        <rect width="400" height="500" fill="#e8e2d2"/>
+        <g clip-path="url(#arco)">
+          <rect x="40" y="40" width="320" height="440" fill="url(#ceu)"/>
+          <circle class="raio" cx="200" cy="300" r="150" fill="url(#luz)"/>
+          <circle cx="200" cy="300" r="46" fill="#d9a441"/>
+          <path d="M40 320c60-24 110-10 160-18s110-26 160-10v190H40z" fill="#b9c4b4" opacity=".7"/>
+          <path d="M40 350c70-14 130 4 200-6s90-14 120-8v160H40z" fill="#93a296" opacity=".7"/>
+        </g>
+        <path d="M60 470V200a140 140 0 0 1 280 0v270" fill="none" stroke="#2a2118" stroke-width="10"/>
+        <path d="M200 60v410M60 300h280" stroke="#2a2118" stroke-width="5" opacity=".85"/>
+        <rect x="20" y="400" width="360" height="40" rx="4" fill="#7a5634"/>
+        <rect x="20" y="436" width="360" height="64" fill="#5e4027"/>
+        <path d="M30 412h340" stroke="#9a7148" stroke-width="2" opacity=".6"/>
+        <g>
+          <path d="M48 402c0-34 28-52 62-52s62 18 62 52z" fill="url(#crosta)"/>
+          <path d="M80 372l12 14M102 364l10 16M124 366l8 15" stroke="#f1d6a4" stroke-width="4" stroke-linecap="round"/>
+          <ellipse cx="236" cy="384" rx="44" ry="20" fill="url(#crosta)"/>
+          <path d="M212 384c10-6 38-6 48 0" stroke="#f1d6a4" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <path d="M282 402c0-42 18-64 40-64s40 22 40 64z" fill="url(#crosta)"/>
+          <path d="M306 362l20 8M304 378l24 8" stroke="#f1d6a4" stroke-width="3.5" stroke-linecap="round"/>
+        </g>
+        <g class="vapor" fill="none" stroke="#fffaf0" stroke-width="3" stroke-linecap="round" opacity=".8">
+          <path d="M100 340c-8-12 8-18 0-32"/>
+          <path d="M124 336c-8-12 8-18 0-32"/>
+          <path d="M322 328c-8-12 8-18 0-32"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="secao palha" id="horario" aria-labelledby="t-horario" data-rg="30">
+    <div class="wrap horario-grade" data-rg="31">
+      <div class="revela" data-rg="32">
+        <h2 id="t-horario" data-rg="33">A semana inteira, dia a dia</h2>
+        <p data-rg="34">Seis dias com a porta aberta das 6h às 20h. O domingo é mais curto: abrimos às 7h e fechamos às 12h.</p>
+        <p class="nota" data-rg="35">O dia de hoje aparece marcado na lista. A marca usa o relógio do seu aparelho.</p>
+      </div>
+      <ul class="dias revela" id="lista-dias" data-rg="36">
+        <li data-dia="1" data-rg="37"><span class="dia" data-rg="38">Segunda</span><span class="hora" data-rg="39">6h às 20h</span></li>
+        <li data-dia="2" data-rg="40"><span class="dia" data-rg="41">Terça</span><span class="hora" data-rg="42">6h às 20h</span></li>
+        <li data-dia="3" data-rg="43"><span class="dia" data-rg="44">Quarta</span><span class="hora" data-rg="45">6h às 20h</span></li>
+        <li data-dia="4" data-rg="46"><span class="dia" data-rg="47">Quinta</span><span class="hora" data-rg="48">6h às 20h</span></li>
+        <li data-dia="5" data-rg="49"><span class="dia" data-rg="50">Sexta</span><span class="hora" data-rg="51">6h às 20h</span></li>
+        <li data-dia="6" data-rg="52"><span class="dia" data-rg="53">Sábado</span><span class="hora" data-rg="54">6h às 20h</span></li>
+        <li data-dia="0" class="domingo" data-rg="55"><span class="dia" data-rg="56">Domingo</span><span class="hora" data-rg="57">7h às 12h</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="secao escura" id="linha" aria-labelledby="t-linha" data-rg="58">
+    <div class="wrap" data-rg="59">
+      <div class="linha-cab revela" data-rg="60">
+        <h2 id="t-linha" data-rg="61">O dia da padaria numa linha</h2>
+        <p data-rg="62">Cada faixa é um dia, da meia-noite à meia-noite. A parte dourada mostra quando a porta está aberta.</p>
+      </div>
+      <div class="regua revela" id="regua" role="img" aria-label="Linha do tempo: de segunda a sábado aberto das 6h às 20h; domingo aberto das 7h às 12h" data-rg="63">
+        <div class="faixa" data-dia="1" data-rg="64"><span data-rg="65">Segunda</span><div class="trilho" data-rg="66"><div class="aberto-bar" style="left:25%;width:58.333%" data-rg="67"></div><div class="agulha" data-rg="68"></div></div></div>
+        <div class="faixa" data-dia="2" data-rg="69"><span data-rg="70">Terça</span><div class="trilho" data-rg="71"><div class="aberto-bar" style="left:25%;width:58.333%" data-rg="72"></div><div class="agulha" data-rg="73"></div></div></div>
+        <div class="faixa" data-dia="3" data-rg="74"><span data-rg="75">Quarta</span><div class="trilho" data-rg="76"><div class="aberto-bar" style="left:25%;width:58.333%" data-rg="77"></div><div class="agulha" data-rg="78"></div></div></div>
+        <div class="faixa" data-dia="4" data-rg="79"><span data-rg="80">Quinta</span><div class="trilho" data-rg="81"><div class="aberto-bar" style="left:25%;width:58.333%" data-rg="82"></div><div class="agulha" data-rg="83"></div></div></div>
+        <div class="faixa" data-dia="5" data-rg="84"><span data-rg="85">Sexta</span><div class="trilho" data-rg="86"><div class="aberto-bar" style="left:25%;width:58.333%" data-rg="87"></div><div class="agulha" data-rg="88"></div></div></div>
+        <div class="faixa" data-dia="6" data-rg="89"><span data-rg="90">Sábado</span><div class="trilho" data-rg="91"><div class="aberto-bar" style="left:25%;width:58.333%" data-rg="92"></div><div class="agulha" data-rg="93"></div></div></div>
+        <div class="faixa" data-dia="0" data-rg="94"><span data-rg="95">Domingo</span><div class="trilho" data-rg="96"><div class="aberto-bar" style="left:29.167%;width:20.833%" data-rg="97"></div><div class="agulha" data-rg="98"></div></div></div>
+      </div>
+      <div class="marcas" aria-hidden="true" data-rg="99"><span data-rg="100"></span>
+        <div data-rg="101"><b style="left:0" data-rg="102">0h</b><b style="left:25%" data-rg="103">6h</b><b style="left:50%" data-rg="104">12h</b><b style="left:75%" data-rg="105">18h</b><b style="left:100%" data-rg="106">24h</b></div>
+      </div>
+      <p class="legenda" data-rg="107"><span data-rg="108"><i style="background:var(--sol)" data-rg="109"></i>Porta aberta</span><span id="leg-agora" hidden data-rg="110"><i style="background:var(--farinha);width:4px" data-rg="111"></i>Agora, no seu relógio</span></p>
+    </div>
+  </section>
+
+  <section class="secao" id="duvidas" aria-labelledby="t-duvidas" data-rg="112">
+    <div class="wrap" data-rg="113">
+      <h2 id="t-duvidas" class="revela" data-rg="114">Perguntas de quem passa cedo</h2>
+      <div class="duvidas" data-rg="115">
+        <article class="revela" data-rg="116">
+          <h3 data-rg="117">Abre em feriado?</h3>
+          <p data-rg="118">O horário desta página é o da semana comum. Para feriados, confirme no balcão da padaria.</p>
+        </article>
+        <article class="revela" data-rg="119">
+          <h3 data-rg="120">Domingo à tarde tem pão?</h3>
+          <p data-rg="121">Não. No domingo a porta fecha às 12h. Se quiser pão para o almoço, chegue antes do meio-dia.</p>
+        </article>
+        <article class="revela" data-rg="122">
+          <h3 data-rg="123">Qual é o primeiro horário?</h3>
+          <p data-rg="124">De segunda a sábado, às 6h. No domingo, uma hora mais tarde, às 7h.</p>
+        </article>
+        <article class="revela" data-rg="125">
+          <h3 data-rg="126">E o último?</h3>
+          <p data-rg="127">De segunda a sábado, a porta fecha às 20h. Chegue um pouco antes para escolher com calma.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer data-rg="128">
+  <div class="wrap" data-rg="129">
+    <div class="rod" data-rg="130">
+      <div data-rg="131">
+        <a class="marca" href="#conteudo" data-rg="132">
+          <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="#d9a441" stroke-width="2" data-rg="133">
+            <circle cx="20" cy="20" r="18"/>
+            <path d="M9 25c0-6 5-10 11-10s11 4 11 10z"/>
+            <path d="M15 19l2 4M20 17v5M25 19l-2 4"/>
+          </svg>
+          Primeira Fornada
+        </a>
+        <p data-rg="134">O forno acende antes do sol. A porta abre logo depois.</p>
+      </div>
+      <div class="rod-col" data-rg="135">
+        <div data-rg="136">
+          <h2 data-rg="137">Nesta página</h2>
+          <ul data-rg="138">
+            <li data-rg="139"><a href="#horario" data-rg="140">Horário da semana</a></li>
+            <li data-rg="141"><a href="#linha" data-rg="142">O dia numa linha</a></li>
+            <li data-rg="143"><a href="#duvidas" data-rg="144">Perguntas</a></li>
+          </ul>
+        </div>
+        <div data-rg="145">
+          <h2 data-rg="146">Horário</h2>
+          <p class="num" data-rg="147">Segunda a sábado: 6h às 20h<br data-rg="148">Domingo: 7h às 12h</p>
+        </div>
+        <div data-rg="149">
+          <h2 data-rg="150">Contato</h2>
+          <p data-rg="151">Endereço e telefone [A CONFERIR]</p>
+        </div>
+      </div>
+    </div>
+    <p class="fim" data-rg="152">Primeira Fornada é uma marca fictícia, criada para esta página.</p>
+  </div>
+</footer>
+
+<script data-rg="153">
+(function(){
+  document.documentElement.classList.add('js');
+
+  var btn = document.querySelector('.abrir-menu');
+  var lista = document.getElementById('menu-lista');
+  btn.addEventListener('click', function(){
+    var aberto = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!aberto));
+    lista.classList.toggle('aberto', !aberto);
+  });
+  lista.addEventListener('click', function(e){
+    if (e.target.tagName === 'A') { btn.setAttribute('aria-expanded','false'); lista.classList.remove('aberto'); }
+  });
+
+  var horas = {0:[7,12],1:[6,20],2:[6,20],3:[6,20],4:[6,20],5:[6,20],6:[6,20]};
+  var nomes = ['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
+  var agora = new Date();
+  var d = agora.getDay();
+  var h = agora.getHours() + agora.getMinutes()/60;
+  var hoje = horas[d];
+  var texto;
+  if (h >= hoje[0] && h < hoje[1]) {
+    texto = 'Aberto agora. Hoje fecha às ' + hoje[1] + 'h.';
+  } else if (h < hoje[0]) {
+    texto = 'Fechado agora. Hoje abre às ' + hoje[0] + 'h.';
+  } else {
+    var am = (d + 1) % 7;
+    texto = 'Fechado agora. Abre amanhã, ' + nomes[am] + ', às ' + horas[am][0] + 'h.';
+  }
+  document.getElementById('agora-texto').textContent = texto + ' (pelo relógio do seu aparelho)';
+
+  var li = document.querySelector('#lista-dias li[data-dia="' + d + '"]');
+  if (li) li.classList.add('hoje');
+
+  var faixa = document.querySelector('.faixa[data-dia="' + d + '"] .agulha');
+  if (faixa) {
+    faixa.style.left = (h / 24 * 100) + '%';
+    faixa.style.display = 'block';
+    document.getElementById('leg-agora').hidden = false;
+  }
+
+  var itens = document.querySelectorAll('.revela');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(ents){
+      ents.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('visto'); io.unobserve(en.target); } });
+    }, {threshold:.15});
+    itens.forEach(function(el){ io.observe(el); });
+  } else {
+    itens.forEach(function(el){ el.classList.add('visto'); });
+  }
+})();
+</script>
+</body>
+</html>
